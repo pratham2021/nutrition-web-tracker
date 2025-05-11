@@ -1,8 +1,7 @@
+import NavBar from "../../../components/NavBar";
 
 export default function UserDashboard() {
     return (
-        <div>
-          Hello!
-        </div>
+        <NavBar/>
     )
 }
