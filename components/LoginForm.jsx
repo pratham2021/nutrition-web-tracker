@@ -1,6 +1,27 @@
+'use client';
 import Link from "next/link";
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from "../src/app/firebase/config.js"
 
 export default function LoginForm() {
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [user] = useAuthState(auth);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      router.push('/dashboard');
+    }
+  }, [user, router]);
+
+  const handleSignIn = () => {
+      console.log('User signed in!')
+  };
 
   return <div className="grid place-items-center h-screen">
       <div className="shadow-lg p-5 rounded-lg border-t-4
